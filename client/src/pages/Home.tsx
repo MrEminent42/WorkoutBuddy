@@ -8,10 +8,12 @@ export const Home = () => {
 
     return (
         <FlexContainer container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-            {/* <Suspense fallback={<WorkoutsListFallback />}> */}
-            <WorkoutsList />
-            <WorkoutForm />
-            {/* </Suspense> */}
+            <Suspense fallback={<WorkoutsListFallback />}>
+                <WorkoutsList />
+            </Suspense>
+            <Suspense fallback={<WorkoutsListFallback />}>
+                <WorkoutForm />
+            </Suspense>
 
         </FlexContainer>
 

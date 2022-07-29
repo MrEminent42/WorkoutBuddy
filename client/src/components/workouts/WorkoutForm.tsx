@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import { useAtom } from 'jotai';
 import { FormEvent, useState } from 'react'
 import myAxios from '../../api/axios';
-import { databaseWorkoutsAtom, workoutsAtom } from '../../jotai/workouts/workoutsAtom';
+import { refreshWorkoutsAtom, workoutsAtom } from '../../jotai/workouts/workoutsAtom';
 import { Workout } from '../../types/types';
 
 export const WorkoutForm = () => {
@@ -13,8 +13,8 @@ export const WorkoutForm = () => {
     const [reps, setReps] = useState('');
     const [error, setError] = useState('');
 
-    const [fetchWorkouts, refreshWorkouts] = useAtom(databaseWorkoutsAtom);
-    const [, setWorkouts] = useAtom(workoutsAtom);
+    // const [fetchWorkouts, refreshWorkouts] = useAtom(workoutsAtom);
+    const [, refreshWorkouts] = useAtom(refreshWorkoutsAtom)
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -33,7 +33,6 @@ export const WorkoutForm = () => {
                 setReps('')
 
                 refreshWorkouts();
-                setWorkouts(fetchWorkouts!);
 
             })
             .catch((error: AxiosError) => {

@@ -2,21 +2,20 @@ import styled from '@emotion/styled'
 import { Grid } from '@mui/material';
 import { useAtom } from 'jotai';
 import { useEffect } from 'react';
-import { databaseWorkoutsAtom, workoutsAtom } from '../../jotai/workouts/workoutsAtom';
+import { workoutsAtom } from '../../jotai/workouts/workoutsAtom';
 import { WorkoutDetails, WorkoutDetailsFallback } from './WorkoutDetails'
 
 export const WorkoutsList = () => {
-    const [workouts, setWorkouts] = useAtom(workoutsAtom)
-    const [fetchWorkouts] = useAtom(databaseWorkoutsAtom)
+    const [workouts] = useAtom(workoutsAtom)
 
     useEffect(() => {
-        setWorkouts(fetchWorkouts!)
+        // setWorkouts(fetchWorkouts!)
     }, [])
 
 
     return (
         <List item xs={4} md={8}>
-            {workouts !== null ? (
+            {workouts ? (
                 workouts.length > 0 && workouts.map((workout) =>
                     <WorkoutDetails workout={workout} key={workout._id + "hi "} />
                 )
