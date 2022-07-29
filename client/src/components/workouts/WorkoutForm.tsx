@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
-import { Button, Card, Grid, InputBase, OutlinedInput, TextField, Typography } from '@mui/material';
+import { Button, Card, Grid, TextField, Typography } from '@mui/material';
 import { AxiosError } from 'axios';
-import React, { FormEvent, useState } from 'react'
+import { useAtom } from 'jotai';
+import { FormEvent, useState } from 'react'
 import myAxios from '../../api/axios';
+import { databaseWorkoutsAtom, workoutsAtom } from '../../jotai/workouts/workoutsAtom';
 import { Workout } from '../../types/types';
 
 export const WorkoutForm = () => {
@@ -11,13 +13,16 @@ export const WorkoutForm = () => {
     const [reps, setReps] = useState('');
     const [error, setError] = useState('');
 
+    const [fetchWorkouts, refreshWorkouts] = useAtom(databaseWorkoutsAtom);
+    const [, setWorkouts] = useAtom(workoutsAtom);
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const workout = { title, load, reps };
 
-        await myAxios.post<Workout>('/workouts', workout)
-            .then((response) => {
+        myAxios.post<Workout>('/workouts', workout)
+            .then(async (response) => {
                 setError('')
 
                 console.debug("New workout added!");
@@ -26,6 +31,10 @@ export const WorkoutForm = () => {
                 setTitle('')
                 setLoad('')
                 setReps('')
+
+                refreshWorkouts();
+                setWorkouts(fetchWorkouts!);
+
             })
             .catch((error: AxiosError) => {
                 setError(error.message)
@@ -38,7 +47,9 @@ export const WorkoutForm = () => {
 
     return (
         <FormContainer item xs={4}>
-            <FormCard elevation={2} variant="outlined">
+            <FormCard
+                // elevation={2}
+                variant="outlined">
 
                 <form onSubmit={handleSubmit}>
                     {error !== "" && ("ERROR: " + error)}

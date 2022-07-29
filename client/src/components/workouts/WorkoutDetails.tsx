@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Typography } from '@mui/material'
+import { Skeleton, Typography } from '@mui/material'
 import React from 'react'
 import { Workout } from '../../types/types'
 
@@ -11,6 +11,19 @@ export const WorkoutDetails = (props: WorkoutProps) => {
                 Load: {props.workout.load}, Reps: {props.workout.reps} <br />
                 Logged: {new Date(props.workout.createdAt).toLocaleDateString()}
             </Info>
+        </CardContainer>
+    )
+}
+
+export const WorkoutDetailsFallback = () => {
+    return (
+        <CardContainer>
+            <Title color='primary'>
+                <Skeleton variant="text" />
+            </Title>
+
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
         </CardContainer>
     )
 }
