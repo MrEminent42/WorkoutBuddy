@@ -1,26 +1,20 @@
 import styled from "@emotion/styled";
 import { Grid } from "@mui/material";
-import { Suspense } from "react"
 import { WorkoutForm } from "../components/workouts/WorkoutForm";
-import { WorkoutsList, WorkoutsListFallback } from "../components/workouts/WorkoutsList";
+import { WorkoutsList } from "../components/workouts/WorkoutsList";
 export const Home = () => {
 
 
     return (
-        <FlexContainer container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-            <Suspense fallback={<WorkoutsListFallback />}>
-                <WorkoutsList />
-            </Suspense>
-            <Suspense fallback={<WorkoutsListFallback />}>
-                <WorkoutForm />
-            </Suspense>
-
-        </FlexContainer>
+        <HomeContainer container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <WorkoutsList />
+            <WorkoutForm />
+        </HomeContainer>
 
     )
 }
 
-const FlexContainer = styled(Grid)`
+const HomeContainer = styled(Grid)`
     /* display: flex; */
     /* background-color: #f3c0c0; */
 `
