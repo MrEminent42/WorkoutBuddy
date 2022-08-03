@@ -20,20 +20,6 @@ export const WorkoutsList = () => {
         return <WorkoutsListFallback />
     }
 
-    // const workoutsQuery = {
-    //     data: [
-    //         {
-    //             "_id": "62e7bb9d02de3c741d2731bb",
-    //             "title": "hello3",
-    //             "reps": 4,
-    //             "load": 35,
-    //             "createdAt": "2022-08-01T11:40:13.669Z",
-    //             "updatedAt": "2022-08-01T11:40:13.669Z",
-    //             "__v": 0
-    //         }
-    //     ]
-    // }
-
     return (
         <List item xs={4} md={8}>
             {workoutsQuery.data.length ? workoutsQuery.data.map((workout) =>

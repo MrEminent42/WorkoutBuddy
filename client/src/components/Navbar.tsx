@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
     return (
-        <HeaderContainer >
+        <HeaderContainer elevation={0} >
             <Container>
-                <NavbarLink to="/">
+                <NavbarLink to="/" >
                     <Typography variant='h3'>Workout Buddy</Typography>
                 </NavbarLink>
             </Container>
