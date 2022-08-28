@@ -9,7 +9,6 @@ export const WorkoutForm = () => {
     const [title, setTitle] = useState('');
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
-    const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
     const [error, setError] = useState('');
 
     const queryClient = useQueryClient();
