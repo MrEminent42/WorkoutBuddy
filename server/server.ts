@@ -2,8 +2,8 @@ import express, { Request, Response } from 'express';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 
-import workoutRoutes from './routes/workouts'
-import userRoutes from './routes/user'
+import workoutRoutes from './routes/workouts.js'
+import userRoutes from './routes/user.js'
 
 // express app
 const app = express();
