@@ -12,6 +12,8 @@ const app = express();
 // middleware
 app.use(express.json()) // access body
 
+app.use(cors());
+
 app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
