@@ -1,5 +1,5 @@
 import { Request, response, Response } from 'express';
-import Workout from '../models/WorkoutModel.js';
+import Workout from '../models/WorkoutModel';
 import mongoose from 'mongoose';
 
 // get all workouts
