@@ -6,7 +6,7 @@ const myAxios = axios.create({
     //     host: 'localhost',
     //     port: 4000,
     // },
-    baseURL: 'http://api.workoutbuddy.leohorwitz.com/api'
+    baseURL: 'https://workoutbuddy-7nfwe.herokuapp.com/api'
 
 })
 
