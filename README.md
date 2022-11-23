@@ -2,6 +2,8 @@
 
 This is my first full-stack project/application. It is heavily based on this [tutorial](https://www.youtube.com/watch?v=98BzS5Oz5E4) by The Net Ninja.
 
+The project is viewable at [workoutbuddy.leohorwitz.com](https://workoutbuddy.leohorwitz.com).
+
 ## Technologies
 
 ### Front end 
